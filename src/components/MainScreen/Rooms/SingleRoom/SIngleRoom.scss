@@ -1,0 +1,59 @@
+.single-room-container {
+    padding: 10px 30px 10px 30px;
+    .device-content-wrapper{
+        display: inline-block;
+        .detail{
+            height: 100%;
+            -webkit-box-shadow: -1px 3px 11px -1px rgba(21,47,79,1);
+            -moz-box-shadow: -1px 3px 11px -1px rgba(21,47,79,1);
+            box-shadow: -1px 3px 11px -1px rgba(21,47,79,0.4);
+            border-radius: 3px;
+            background-color: #fff;
+            ul {
+                margin-top: 10px;
+                li {
+                    list-style: none;
+                    line-height: 30px;
+                    .sensor-icon {
+                        height: 15px;
+                        display: inline-block;
+                        width: 15px;
+                    }
+                    .sensor-item {
+                        margin-left: 20px;
+                    }
+                }
+            }
+
+        }
+    }
+    .sensor {
+        height: 200px;
+        width:100%;
+    }
+    .heating {
+        height: 200px;
+        width: 100%;
+    }
+    .sensor-detail {
+        margin-right: 10px !important;
+        
+        
+    }
+    .heating-detail {
+        margin-left: 10px !important;
+        position: relative;
+        .on-off{
+            margin-top: 10px;
+        }
+        .progress {
+            height: 100px;
+            width:100px;
+            display: inline-block;
+            padding-top: 10px;
+            position: absolute;
+            right:70px;
+            bottom:85px;
+        }
+    }
+}
