@@ -4,15 +4,26 @@ import * as actions from "../../../../actions/index";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 import { RadialProgress } from 'react-radial-progress-indicator';
-
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 class Heater extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
-        
+        open: false,
     }
   }
+
+    handleClickOpen = () => {
+        this.setState({ open: true });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
 
     turnOffHeater =()=>{
         this.props.toogleHeater(false);
@@ -34,10 +45,19 @@ class Heater extends Component {
             <a className="ui orange left ribbon label">Heater</a>
             <div>
             <div className="ui buttons on-off">
-                <button onClick={()=>this.turnOnHeater()} className={`ui button ${heaterStatus?'teal':''}`}>On</button>
+                <button onClick={()=>this.turnOnHeater()} className={`ui button  ${heaterStatus?'blue':''}`}>On</button>
                 <div className="or"></div>
-                <button onClick={()=>this.turnOffHeater()} className={`ui  button ${heaterStatus?'':'teal'} `}>Off</button>
+                <button onClick={()=>this.turnOffHeater()} className={`ui  button ${heaterStatus?'':'blue'} `}>Off</button>
             </div>
+
+            <div className="set-time">
+                {/* <button className="ui mini blue button">Blue</button>
+                <div className="or">or</div>
+                <button className="ui mini blue button">Blue</button> */}
+                <button onClick={this.handleClickOpen} class="ui small blue button set-time-btn">Set time</button>
+                
+
+            </div> 
 
             <div className="progress">
                 <RadialProgress
@@ -57,6 +77,32 @@ class Heater extends Component {
                 />
             </div>
             </div>
+
+
+
+            {/* DIALOG */}
+            <Dialog
+                open={this.state.open}
+                onClose={this.handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+                >
+                <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                    Let Google help apps determine location. This means sending anonymous location data to
+                    Google, even when no apps are running.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <button onClick={this.handleClose} className="ui button primary">
+                    Disagree
+                    </button>
+                    <button onClick={this.handleClose} className="ui button primary" autoFocus>
+                    Agree
+                    </button>
+                </DialogActions>
+            </Dialog>
                             
         </div>
      
