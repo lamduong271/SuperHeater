@@ -1,0 +1,32 @@
+$headerColor: #f2711c;
+.Analyst-Main-Page {
+    padding: 20px;
+    .headerText{
+        color:$headerColor !important;
+    }
+
+    .chart-container {
+
+        .chart {
+            display: inline-block;
+    
+        }
+        .chart-label {
+            margin-top: 20px;
+            display: inline-block;
+            .label-detail{
+                
+                .label-color{
+                    height:20px;
+                    width:40px;
+                    display: inline-block;
+                    border-radius: 5px;
+                }
+                .label-name{
+                    display: inline-block;
+                    margin-left: 20px;
+                }
+            }
+        }
+    }
+}

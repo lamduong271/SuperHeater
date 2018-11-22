@@ -14,12 +14,12 @@ class BedroomChart extends Component {
 
 
   render() {
-    var data = {
+    const data = {
       labels: ["January", "February", "March", "April", "May", "June", "July"],
       datasets: [
         {
           label: "My First dataset",
-          fillColor: "rgba(220,220,220,0.2)",
+          fillColor: "rgba(220,220,220,0.4)",
           strokeColor: "rgba(220,220,220,1)",
           pointColor: "rgba(220,220,220,1)",
           pointStrokeColor: "#fff",
@@ -29,19 +29,38 @@ class BedroomChart extends Component {
         },
         {
           label: "My Second dataset",
-          fillColor: "rgba(151,187,205,0.2)",
+          fillColor: "rgba(151,187,205,0.4)",
           strokeColor: "rgba(151,187,205,1)",
           pointColor: "rgba(151,187,205,1)",
           pointStrokeColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(151,187,205,1)",
-          data: [28, 48, 40, 19, 86, 27, 90]
+          data: [28, 48, 40, 19, 33, 27, 33]
         }
       ]
     };
+
+    const renderLabel = data.datasets.map(label => {
+        return (
+            <div key={label.label}>
+                <div className="label-detail">
+                <div className="label-color" style={{backgroundColor: label.pointHighlightStroke}}></div>
+                <div className="label-name">{label.label}</div>
+                </div>
+                
+            </div>
+        )
+    })
     return (
-      <div>
-          <LineChart data={data}  width="600" height="250"/>
+      <div className="chart-container ui grid">
+      
+          <div className="chart eleven wide column">
+                <LineChart data={data}  width="700" height="250"/>
+          </div>
+          <div className="chart-label five wide column">
+                {renderLabel}
+
+          </div>
       </div>
      
     );
