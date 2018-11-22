@@ -62,7 +62,7 @@
                 }
             }
             .set-time-btn {
-                margin-top: 20px;
+                margin-top: 10px;
             }
         }
         .on-off{
@@ -78,4 +78,24 @@
             bottom:85px;
         }
     }
+}
+// DIALOG
+
+.content-dialog {
+    height: 600px;
+    width: 600px;
+    .time-picker{
+        height: 300px;
+        width: 300px;
+        margin: auto;
+    }
+}
+
+//overwrite
+.react_times_button {
+    background-color: #3498db!important;
+    color: #fff !important;
+}
+.time_picker_modal_footer {
+    display: none;
 }

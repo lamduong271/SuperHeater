@@ -50,6 +50,24 @@ const reducer = (state = initialState, action) => {
                 state.heaterLevel = CurrentHeaterValue
             }
             return {...state}
+        case types.INCREASE_HEATER:
+            if(state.heaterLevel<10) {
+                state.heaterLevel +=1;
+                console.log(state.heaterLevel)
+            }
+            else {
+                state.heaterLevel =10;
+            }
+            return {...state}
+        case types.DECREASE_HEATER:
+            if(state.heaterLevel>1) {
+                state.heaterLevel -=1;
+                console.log(state.heaterLevel)
+            }
+            else {
+                state.heaterLevel =0;
+            }
+            return {...state}
         default:
             return {...state};
     }

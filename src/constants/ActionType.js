@@ -5,3 +5,5 @@ export const GET_ALL_ROOMS = "GET_ALL_ROOMS";
 export const GET_CURRENT_ROOM = "GET_CURRENT_ROOM";
 export const TOGGLE_HEATER = "TOGGLE_HEATER";
 export const GET_HEATER_LEVEL = "GET_HEATER_LEVEL";// 0 when turn off
+export const INCREASE_HEATER = "INCREASE_HEATER";
+export const DECREASE_HEATER = "DECREASE_HEATER";

@@ -34,3 +34,15 @@ export const getHeaterLever = (value) => {
         value
     }
 }
+
+export const increaseHeater = () => {
+    return {
+        type: types.INCREASE_HEATER,
+    }
+}
+
+export const decreaseHeater = () => {
+    return {
+        type: types.DECREASE_HEATER,
+    }
+}
