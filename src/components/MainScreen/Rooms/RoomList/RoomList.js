@@ -12,6 +12,9 @@ class RoomList extends Component {
   findRoomByIndex = (roomId) => {
       this.props.getCurrentRoom(roomId)
   }
+  componentDidMount() {
+      this.props.getCurrentRoom(1);
+  }
 
   renderRooms = () => {
     const {currentRoom} = this.props;

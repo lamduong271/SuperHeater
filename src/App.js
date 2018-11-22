@@ -10,7 +10,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
-
+import Analyst from './components/Anslysist/AllRoom';
 library.add( faCheckSquare, faCoffee)
 
 class App extends Component {
@@ -23,6 +23,9 @@ class App extends Component {
   goHeatingPage = () => {
     this.props.history.push("/devices");
   }
+  goAnalystPage = () => {
+    this.props.history.push("/analyst");
+  }
 
 
   render() {
@@ -33,7 +36,7 @@ class App extends Component {
       <div className="ui grid">
         <div className="four wide column main">
         {
-          isAuthenticated
+          !isAuthenticated
           ?
           <div>
           <div className="userAva">
@@ -43,7 +46,7 @@ class App extends Component {
           <ul className="unorderList">
             <li className="menuList"><img className="menuIcon" src={require("./image/menu/home.png")} alt=""/> <span>Dashboard</span></li>
             <li className="menuList"><img className="menuIcon" src={require("./image/menu/heater.png")} alt=""/> <span onClick={this.goHeatingPage}>Heating machines</span></li>
-            <li className="menuList"><img className="menuIcon" src={require("./image/menu/line-chart.png")} alt=""/> <span>Analyst</span></li>
+            <li className="menuList"><img className="menuIcon" src={require("./image/menu/line-chart.png")} alt=""/> <span onClick={this.goAnalystPage}>Analyst</span></li>
             <li className="menuList"><img className="menuIcon" src={require("./image/menu/user-silhouette.png")} alt=""/> <span>Setting</span></li>
             
           </ul>
@@ -61,6 +64,7 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={Login}/>
           <Route path="/devices" component={DeviceMainComponent}/>
+          <Route path="/analyst" component={Analyst}/>
         </Switch>
         </div>
       </div>

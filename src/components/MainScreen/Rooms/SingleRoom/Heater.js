@@ -117,9 +117,9 @@ class Heater extends Component {
                 ringIntermediateColour="#aaa"
                 width={150}
                 height={150}
-                startStep={heaterLevel}
+                startStep={this.state.count?heaterLevel-1:heaterLevel+1}
                 steps={10}
-                step={this.state.count?heaterLevel+1:heaterLevel-1}
+                step={heaterLevel}
                 text={function text(steps,proportion){return Math.floor(100*proportion)+"%"}}
                 />
             </div>
