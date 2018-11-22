@@ -99,3 +99,52 @@
 .time_picker_modal_footer {
     display: none;
 }
+
+//electricity-consumption
+
+.electricity-consumption  {
+    padding: 30px 30px 10px 30px;
+    height: 300px;
+    .electricity-consumption-detail {
+        height: 100%;
+        -webkit-box-shadow: -1px 3px 11px -1px rgba(21,47,79,1);
+        -moz-box-shadow: -1px 3px 11px -1px rgba(21,47,79,1);
+        box-shadow: -1px 3px 11px -1px rgba(21,47,79,0.4);
+        background-color: #fff;
+        border-radius: 3px;
+        .consumption-icon-wrapper {
+            display: inline-flex;
+            height:70px;
+            width:70px;
+            background-color: rgba(174, 211, 253, 0.678);
+            border: 1px solid rgba(21, 91, 172, 0.705);
+            margin: 10px;
+            border-radius: 50px;
+            justify-content: center;
+            
+        .consumption-icon {
+            margin-top: 15px;
+            img{
+                height: 35px;
+                width:35px
+            }
+        }
+        }
+        .plus {
+            background-color: rgba(174, 211, 253, 0.4);
+            border: 1px solid rgba(21, 91, 172, 0.405);
+            cursor: pointer;
+            &:hover {
+                background-color: rgba(174, 211, 253, 0.6);
+            }
+
+        }
+    }
+}
+
+//dislog
+.form-add-device{
+    width: 400px;
+    height: 320px;
+    padding: 30px;
+}

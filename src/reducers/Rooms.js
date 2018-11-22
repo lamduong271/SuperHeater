@@ -3,22 +3,45 @@ const Rooms = [
     {
         id:1,
         name:'Bedroom',
-        source:require('../image/menu/double-bed.png')
+        source:require('../image/menu/double-bed.png'),
+        devices:[
+            {
+                name:'TV',
+                source:require('../image/Furniture/TV.png')
+            },
+            {
+                name:'Fridge',
+                source:require('../image/Furniture/fridge.png')
+            },
+            {
+                name:'Computer',
+                source:require('../image/Furniture/computer.png')
+            },
+        ]
     },
     {
         id:2,
         name:'Livingroom',
-        source:require('../image/menu/armchair.png')
+        source:require('../image/menu/armchair.png'),
+        devices:[
+            
+        ]
     },
     {
         id:3,
         name:'Kitchen',
-        source:require('../image/menu/kitchen.png')
+        source:require('../image/menu/kitchen.png'),
+        devices:[
+            
+        ]
     },
     {
         id:4,
         name:'Bathroom',
-        source:require('../image/menu/bathtub.png')
+        source:require('../image/menu/bathtub.png'),
+        devices:[
+            
+        ]
     }
 ]
 const CurrentHeaterValue = 5;

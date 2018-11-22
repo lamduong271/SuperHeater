@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import RoomList from './RoomList/RoomList';
 import SingleRoom from './SingleRoom/SingleRoom';
+import ElectricityConsumption from './SingleRoom/ElectricityConsumption';
 class DeviceMainComponent extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +16,7 @@ class DeviceMainComponent extends Component {
       <div>
         <RoomList></RoomList>
         <SingleRoom></SingleRoom>
+        <ElectricityConsumption></ElectricityConsumption>
           
       </div>
      
