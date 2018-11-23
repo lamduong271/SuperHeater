@@ -36,13 +36,15 @@ class Heater extends Component {
     };
 
     turnOffHeater =()=>{
-        this.props.toogleHeater(false);
+        this.props.turnOffHeater()
         this.props.getHeaterLever(0)
+        console.log("OFF",this.props.currentRoom.heaterStatus)
     } 
 
     turnOnHeater =()=>{
-        this.props.toogleHeater(true);
-        this.props.getHeaterLever()
+        this.props.turnOnHeater();
+        this.props.getHeaterLever();
+        console.log("ON",this.props.currentRoom.heaterStatus)
     } 
 
     onTimeChange=(event)=> {
@@ -81,20 +83,21 @@ class Heater extends Component {
 
 
   render() {
-      const {heaterStatus, heaterLevel} = this.props;
+      const {heaterStatus, heaterLevel,currentRoom} = this.props;
       const copyHeater = heaterLevel;
+      console.log(this.props.currentRoom.heaterStatus)
     return (
         <div className="ui segment detail heating-detail">
             <a className="ui orange left ribbon label">Heater</a>
             <div>
             <div className="ui on-off">
-                <button onClick={()=>this.turnOnHeater()} className={`ui mini button ${heaterStatus?'blue':'blue basic'}`}>On</button>
-                <button onClick={()=>this.turnOffHeater()} className={`ui mini button ${heaterStatus?'blue basic':'blue'} `}>Off</button>
+                <button onClick={()=>this.turnOnHeater()} className={`ui mini button ${currentRoom.heaterStatus?'blue':'blue basic'}`}>On</button>
+                <button onClick={()=>this.turnOffHeater()} className={`ui mini button ${currentRoom.heaterStatus?'blue basic':'blue'} `}>Off</button>
             </div>
 
             <div className="ui on-off">
-                <button onClick={()=>this.increaseHeater()} className={`ui mini button ${heaterStatus?'blue':'blue basic'}`}><i className="plus icon"></i></button>
-                <button onClick={()=>this.decreaseHeater()} className={`ui mini button ${heaterStatus?'blue basic':'blue'} `}><i className="minus icon"></i></button>
+                <button onClick={()=>this.increaseHeater()} className={`ui mini button ${this.state.count?'blue':'blue basic'}`}><i className="plus icon"></i></button>
+                <button onClick={()=>this.decreaseHeater()} className={`ui mini button ${this.state.count?'blue basic':'blue'} `}><i className="minus icon"></i></button>
             </div>
 
             <div className="set-time">
@@ -117,9 +120,9 @@ class Heater extends Component {
                 ringIntermediateColour="#aaa"
                 width={150}
                 height={150}
-                startStep={this.state.count?heaterLevel-1:heaterLevel+1}
+                startStep={this.state.count?currentRoom.heaterLevel-1:currentRoom.heaterLevel+1}
                 steps={10}
-                step={heaterLevel}
+                step={currentRoom.heaterLevel}
                 text={function text(steps,proportion){return Math.floor(100*proportion)+"%"}}
                 />
             </div>
@@ -175,13 +178,17 @@ class Heater extends Component {
 const mapStateToProps = (state) => {
   return {
     heaterStatus: state.Rooms.heaterStatus,
-    heaterLevel: state.Rooms.heaterLevel
+    heaterLevel: state.Rooms.heaterLevel,
+    currentRoom: state.Rooms.currentRoom,
   }
 }
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    toogleHeater:(value)=>{
-        dispatch(actions.toogleHeater(value))
+    turnOnHeater:(value)=>{
+        dispatch(actions.turnOnHeater())
+    },
+    turnOffHeater:(value)=>{
+        dispatch(actions.turnOffHeater())
     },
     getHeaterLever:(value) => {
         dispatch(actions.getHeaterLever(value))

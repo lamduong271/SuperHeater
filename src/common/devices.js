@@ -1,34 +1,45 @@
 const list_devices = [
     {
-        name:'TV',
+        key:1,
+        text:'TV',
+        value:'TV',
         source:require('../image/Furniture/TV.png')
     },
     {
-        name:'Fridge',
+        key:2,
+        text:'Fridge',
+        value:'Fridge',
         source:require('../image/Furniture/fridge.png')
     },
     {
-        name:'Computer',
+        key:3,
+        text:'Computer',
+        value:'Computer',
         source:require('../image/Furniture/computer.png')
     },
     {
-        name:'Reading Lamp',
+        key:4,
+        text:'Reading Lamp',
         source:require('../image/Furniture/lamp2.png')
     },
     {
-        name:'Light',
+        key:5,
+        text:'Light',
         source:require('../image/Furniture/led.png')
     },
     {
-        name:'Microwave',
+        key:6,
+        text:'Microwave',
         source:require('../image/Furniture/microwave.png')
     },
     {
-        name:'Oven',
+        key:7,
+        text:'Oven',
         source:require('../image/Furniture/oven.png')
     },
     {
-        name:'Washing machine',
+        key:8,
+        text:'Washing machine',
         source:require('../image/Furniture/washing-machine.png')
     }
 ]

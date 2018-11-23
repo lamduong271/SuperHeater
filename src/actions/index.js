@@ -21,10 +21,14 @@ export const getCurrentRoom = (roomId) => {
     }
 }
 
-export const toogleHeater = (value) => {
+export const turnOnHeater = () => {
     return {
-        type: types.TOGGLE_HEATER,
-        value
+        type: types.TURN_ON_HEATER,
+    }
+}
+export const turnOffHeater = () => {
+    return {
+        type: types.TURN_OFF_HEATER,
     }
 }
 

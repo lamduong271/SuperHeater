@@ -15,8 +15,19 @@ class DeviceMainComponent extends Component {
     return (
       <div>
         <RoomList></RoomList>
-        <SingleRoom></SingleRoom>
-        <ElectricityConsumption></ElectricityConsumption>
+        {
+          this.props.currentRoom
+          ?
+          <div>
+              <SingleRoom></SingleRoom>
+              <ElectricityConsumption></ElectricityConsumption>
+          </div>
+          :
+          ''
+        }
+              
+          
+        
           
       </div>
      
@@ -27,6 +38,7 @@ class DeviceMainComponent extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    currentRoom: state.Rooms.currentRoom
   }
 }
 const mapDispatchToProps = (dispatch, props) => {

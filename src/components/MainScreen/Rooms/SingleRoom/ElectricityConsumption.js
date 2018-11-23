@@ -16,67 +16,89 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { Form } from 'semantic-ui-react'
-
+import devices from '../../../../common/devices';
 class ElectricityConsumption extends Component {
   constructor(props) {
     super(props);
     this.state = {
         open: false,
         age: '',
+        editMode:false,
+        
+          name:'',
+          kwh:'',
+          hours:''
+        
     }
   }
   
-  handleChange = name => event => {
-    this.setState({ [name]: Number(event.target.value) });
+  handleChange = e => {
+    
+    this.setState({
+      
+        [e.target.name]: e.target.value 
+      
+    });
+    console.log("onchange", this.state)
   };
 
-  handleClickOpen = () => {
+  openFormDevice = () => {
+    this.setState({
+      editMode:false
+    })
     this.setState({ open: true });
   };
 
   handleClose = () => {
     this.setState({ open: false });
   };
+
+  editDevice = (id) => {
+    this.setState({
+      editMode:true
+    })
+  }
   
   handleChange = (e, { value }) => this.setState({ value })
 
   render() {
-      console.log("this.props.currentRoom.devices" , this.props.currentRoom.devices)
-      const options = [
-        { key: 'm', text: 'TV', value: 'TV' },
-        { key: 'f', text: 'Fridge', value: 'fridge' },
-      ]
+    let renderDevicesInCurrentRoom;
+      const options = devices
+      
+      if(this.props.currentRoom.devices) {
+       renderDevicesInCurrentRoom =this.props.currentRoom.devices.map(device => {
+          return (
+              <span key ={device.name} className="consumption-icon-wrapper">
+                  <div className="consumption-icon">
+                      <img src={device.source} alt=""/>
+                  </div>
+                  <span onClick={()=>this.editDevice(device.id)} className="consumption-edit">
+                    <div  className="icon">
+                       <FontAwesomeIcon icon={Icons.faPen}></FontAwesomeIcon>
+                    </div>
+                  </span>  
+              </span>
+            )
+        })
+      }
     return (
+      
         <div className="electricity-consumption ">
-            <div className="electricity-consumption-detail">
-                <span className="consumption-icon-wrapper">
-                    <div className="consumption-icon">
-                        <img src={require('../../../../image/Furniture/reading-lamp.png')} alt=""/>
-                    </div>
-                    <div className="consumption-item"></div>  
-                </span>
-
-                <span className="consumption-icon-wrapper">
-                    <div className="consumption-icon">
-                    <img src={require('../../../../image/Furniture/TV.png')} alt=""/>
-                    </div>
-                    <div className="consumption-item"></div> 
-                </span>
-
-                <span className="consumption-icon-wrapper">
-                    <div className="consumption-icon">
-                        <img src={require('../../../../image/Furniture/computer.png')} alt=""/>
-                    </div>
-                    <div className="consumption-item"></div>
-                </span>
-
-                <span onClick={this.handleClickOpen} className="consumption-icon-wrapper plus">
+        {this.props.currentRoom.devices
+        ?
+        <div className="electricity-consumption-detail">
+          {renderDevicesInCurrentRoom}
+          <span onClick={this.openFormDevice} className="consumption-icon-wrapper plus">
                     <div className="consumption-icon">
                         <img src={require('../../../../image/Furniture/plus.png')} alt=""/>
                     </div>
                     <div className="consumption-item"></div>
-                </span>
-            </div>
+          </span>
+        </div>
+        :
+        ''
+        }
+            
 
             {/* DIAGO */}
             <div>
@@ -89,10 +111,10 @@ class ElectricityConsumption extends Component {
         
         <Form className="form-add-device">
         <Form.Group widths='equal'>
-          <Form.Select fluid label='Device' options={options} placeholder='device' />
+          <Form.Select value={this.state.name} name="name" fluid label='Device' options={options} placeholder='device' />
         </Form.Group>
-        <Form.Input fluid label='kwh' placeholder='Kw/h' />
-        <Form.Input fluid label='Average hours per day' placeholder='average hour used per day' />
+        <Form.Input value={this.state.kwh} name="kwh" onChange={(value)=>this.setState({kwh:value})} fluid label='kwh' placeholder='Kw/h' />
+        <Form.Input value={this.state.hours} name="hours" onChange={this.handleChange} fluid label='Average hours per day' placeholder='average hour used per day' />
         <Form.Group widths='equal'>
             <Form.Button onClick={this.handleClose}>Submit</Form.Button>
             <Form.Button onClick={this.handleClose}>Cancel</Form.Button>

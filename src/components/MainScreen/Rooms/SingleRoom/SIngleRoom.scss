@@ -1,3 +1,5 @@
+$headerColor: #f2711c;
+
 .single-room-container {
     padding: 10px 30px 10px 30px;
     .device-content-wrapper{
@@ -121,12 +123,27 @@
             margin: 10px;
             border-radius: 50px;
             justify-content: center;
+            position: relative;
             
         .consumption-icon {
             margin-top: 15px;
             img{
                 height: 35px;
                 width:35px
+            }
+        }
+        .consumption-edit {
+            height:30px;
+            width:30px;
+            background-color: $headerColor;
+            position: absolute;
+            border-radius: 20px;
+            bottom:-10px;
+            right:0px;
+            cursor: pointer;
+            .icon {
+                margin-left: 8px;
+                margin-top: 5px;
             }
         }
         }
