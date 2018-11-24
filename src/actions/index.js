@@ -50,3 +50,5 @@ export const decreaseHeater = () => {
         type: types.DECREASE_HEATER,
     }
 }
+
+

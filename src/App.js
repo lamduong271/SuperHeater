@@ -11,6 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 import Analyst from './components/Anslysist/AllRoom';
+import Dashboard from './components/dashboard/dashboard';
 library.add( faCheckSquare, faCoffee)
 
 class App extends Component {
@@ -25,6 +26,9 @@ class App extends Component {
   }
   goAnalystPage = () => {
     this.props.history.push("/analyst");
+  }
+  goDashboard = () => {
+    this.props.history.push("/dashboard");
   }
 
 
@@ -44,7 +48,7 @@ class App extends Component {
           </div>
 
           <ul className="unorderList">
-            <li className="menuList"><img className="menuIcon" src={require("./image/menu/home.png")} alt=""/> <span>Dashboard</span></li>
+            <li className="menuList"><img className="menuIcon" src={require("./image/menu/home.png")} alt=""/> <span onClick={this.goDashboard}>Dashboard</span></li>
             <li className="menuList"><img className="menuIcon" src={require("./image/menu/heater.png")} alt=""/> <span onClick={this.goHeatingPage}>Heating machines</span></li>
             <li className="menuList"><img className="menuIcon" src={require("./image/menu/line-chart.png")} alt=""/> <span onClick={this.goAnalystPage}>Analyst</span></li>
             <li className="menuList"><img className="menuIcon" src={require("./image/menu/user-silhouette.png")} alt=""/> <span>Setting</span></li>
@@ -65,6 +69,8 @@ class App extends Component {
           <Route path="/" exact component={Login}/>
           <Route path="/devices" component={DeviceMainComponent}/>
           <Route path="/analyst" component={Analyst}/>
+          <Route path="/dashboard" component={Dashboard}/>
+
         </Switch>
         </div>
       </div>

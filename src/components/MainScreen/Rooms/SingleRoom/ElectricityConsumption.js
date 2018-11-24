@@ -59,7 +59,6 @@ class ElectricityConsumption extends Component {
     })
   }
   
-  handleChange = (e, { value }) => this.setState({ value })
 
   render() {
     let renderDevicesInCurrentRoom;
