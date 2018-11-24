@@ -3,18 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../../../../actions/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
-import list_devices from "../../../../common/devices";
-import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import InputLabel from "@material-ui/core/InputLabel";
-import Input from "@material-ui/core/Input";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import { Form } from "semantic-ui-react";
 import devices from "../../../../common/devices";
 class ElectricityConsumption extends Component {
@@ -24,10 +13,10 @@ class ElectricityConsumption extends Component {
       open: false,
       age: "",
       editMode: false,
-
       name: "",
       kwh: "",
-      hours: ""
+      hours: "",
+      selectValue: ""
     };
   }
 
@@ -35,7 +24,13 @@ class ElectricityConsumption extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log("onchange", this.state);
+  };
+
+  onSelectChange = (e, data) => {
+    this.setState({
+      ...this.state,
+      name: data.value
+    });
   };
 
   openFormDevice = () => {
@@ -118,8 +113,8 @@ class ElectricityConsumption extends Component {
                   fluid
                   label="Device"
                   options={options}
-                  placeholder="device"
-                  onChange={this.handleChange}
+                  placeholder="Choose your device"
+                  onChange={this.onSelectChange}
                 />
               </Form.Group>
               <Form.Input
