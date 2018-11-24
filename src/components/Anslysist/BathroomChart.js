@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import API from "./api/API";
 import { Header } from "semantic-ui-react";
 import { getTimeMark, onDisplayChart } from "./helper";
-import { connect } from "react-redux";
 
-class BedroomChart extends Component {
+class BathroomChart extends Component {
 	state = {
 		data: []
 	};
@@ -21,7 +20,7 @@ class BedroomChart extends Component {
 
 	fetchAPI = async () => {
 		const { period } = this.props;
-		const data = await API.GETBedroom();
+		const data = await API.GETBathroom();
 		const timeMark = getTimeMark(period);
 		const flterData = data.filter(day => Object.keys(day)[0] >= timeMark);
 		this.setState({ data: [...flterData] });
@@ -37,7 +36,7 @@ class BedroomChart extends Component {
 		return (
 			<div>
 				<Header as="h3" block>
-					Kitchen
+					Bathroom
 				</Header>
 				{displayChart}
 			</div>
@@ -45,13 +44,4 @@ class BedroomChart extends Component {
 	}
 }
 
-const mapStateToProps = state => {
-	return {};
-};
-const mapDispatchToProps = (dispatch, props) => {
-	return {};
-};
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(BedroomChart);
+export default BathroomChart;
