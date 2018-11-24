@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import API from "./api/API";
-import RoomLineChart from "./Chart/RoomLineChart";
+import { Header } from "semantic-ui-react";
+import { getTimeMark, onDisplayChart } from "./helper";
+import { connect } from "react-redux";
 
 class KitchenChart extends Component {
 	state = {
@@ -11,26 +13,45 @@ class KitchenChart extends Component {
 		this.fetchAPI();
 	}
 
+	componentDidUpdate(prevProps) {
+		if (prevProps.period !== this.props.period) {
+			this.fetchAPI();
+		}
+	}
+
 	fetchAPI = async () => {
-		const data = await API.GETToilet();
-		this.setState({ data });
+		const { period } = this.props;
+		const data = await API.GETKitchen();
+		const timeMark = getTimeMark(period);
+		const flterData = data.filter(day => Object.keys(day)[0] >= timeMark);
+		this.setState({ data: [...flterData] });
 	};
 
 	render() {
 		const { data } = this.state;
+		const { period } = this.props;
 		let displayChart = "Loading...";
 		if (data.length) {
-			const todayDate = Object.keys(data[0]);
-			const todayData = data[0][todayDate];
-			displayChart = <RoomLineChart data={todayData} />;
+			displayChart = onDisplayChart(data, period);
 		}
 		return (
 			<div>
-				<h3>KitchenChart</h3>
+				<Header as="h3" block>
+					Kitchen
+				</Header>
 				{displayChart}
 			</div>
 		);
 	}
 }
 
-export default KitchenChart;
+const mapStateToProps = state => {
+	return {};
+};
+const mapDispatchToProps = (dispatch, props) => {
+	return {};
+};
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(KitchenChart);

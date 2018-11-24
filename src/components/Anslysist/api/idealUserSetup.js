@@ -1,7 +1,7 @@
 //user changes
-//for toilet
+//for Bathroom
 export const idealConstants = {
 	tempt: [18, 23],
-	moist: [30, 50],
+	humidity: [30, 50],
 	CO2: [400, 600]
 };

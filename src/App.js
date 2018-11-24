@@ -15,107 +15,81 @@ import Dashboard from "./components/DashBoard/dashboard";
 library.add(faCheckSquare, faCoffee);
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
 
-  goHeatingPage = () => {
-    this.props.history.push("/devices");
-  };
-  goAnalystPage = () => {
-    this.props.history.push("/analyst");
-  };
+	goHeatingPage = () => {
+		this.props.history.push("/devices");
+	};
+	goAnalystPage = () => {
+		this.props.history.push("/analyst");
+	};
 
-  goDashBoardPage = () => {
-    this.props.history.push("/dashboard");
-  };
+	goDashBoardPage = () => {
+		this.props.history.push("/dashboard");
+	};
 
-  render() {
-    const { isAuthenticated } = this.props;
-    return (
-      <div className="container">
-        <div className="ui grid">
-          <div className="four wide column main">
-            {!isAuthenticated ? (
-              <div>
-                <div className="userAva">
-                  <img src={require("./image/menu/ava.png")} alt="" />
-                </div>
+	render() {
+		const { isAuthenticated } = this.props;
+		return (
+			<div className="container">
+				<div className="ui grid">
+					<div className="four wide column main">
+						{!isAuthenticated ? (
+							<div>
+								<div className="userAva">
+									<img src={require("./image/menu/ava.png")} alt="" />
+								</div>
 
-                <ul className="unorderList">
-                  <li className="menuList">
-                    <img
-                      className="menuIcon"
-                      src={require("./image/menu/home.png")}
-                      alt=""
-                    />{" "}
-                    <span onClick={this.goDashBoardPage}>Dashboard</span>
-                  </li>
-                  <li className="menuList">
-                    <img
-                      className="menuIcon"
-                      src={require("./image/menu/heater.png")}
-                      alt=""
-                    />{" "}
-                    <span onClick={this.goHeatingPage}>Heating machines</span>
-                  </li>
-                  <li className="menuList">
-                    <img
-                      className="menuIcon"
-                      src={require("./image/menu/line-chart.png")}
-                      alt=""
-                    />{" "}
-                    <span onClick={this.goAnalystPage}>Analysis</span>
-                  </li>
-                  <li className="menuList">
-                    <img
-                      className="menuIcon"
-                      src={require("./image/menu/user-silhouette.png")}
-                      alt=""
-                    />{" "}
-                    <span>Setting</span>
-                  </li>
-                </ul>
-              </div>
-            ) : (
-              ""
-            )}
+								<ul className="unorderList">
+									<li className="menuList">
+										<img className="menuIcon" src={require("./image/menu/home.png")} alt="" /> <span onClick={this.goDashBoardPage}>Dashboard</span>
+									</li>
+									<li className="menuList">
+										<img className="menuIcon" src={require("./image/menu/heater.png")} alt="" />{" "}
+										<span onClick={this.goHeatingPage}>Heating machines</span>
+									</li>
+									<li className="menuList">
+										<img className="menuIcon" src={require("./image/menu/line-chart.png")} alt="" />{" "}
+										<span onClick={this.goAnalystPage}>Analysis</span>
+									</li>
+									<li className="menuList">
+										<img className="menuIcon" src={require("./image/menu/user-silhouette.png")} alt="" /> <span>Setting</span>
+									</li>
+								</ul>
+							</div>
+						) : (
+							""
+						)}
 
-            <img
-              className="image-menu-city-black"
-              src={require("./image/nightcities.png")}
-              alt="Cover side bar"
-            />
-            <img
-              className="image-menu-city-white"
-              src={require("./image/skyscraper.png")}
-              alt="side bar decoration"
-            />
-          </div>
-          <div className="twelve wide wide column router">
-            <Switch>
-              <Route path="/" exact component={Login} />
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/devices" component={DeviceMainComponent} />
-              <Route path="/analyst" component={Analyst} />
-            </Switch>
-          </div>
-        </div>
-      </div>
-    );
-  }
+						<img className="image-menu-city-black" src={require("./image/nightcities.png")} alt="Cover side bar" />
+						<img className="image-menu-city-white" src={require("./image/skyscraper.png")} alt="side bar decoration" />
+					</div>
+					<div className="twelve wide wide column router">
+						<Switch>
+							<Route path="/" exact component={Login} />
+							<Route path="/dashboard" component={Dashboard} />
+							<Route path="/devices" component={DeviceMainComponent} />
+							<Route path="/analyst" component={Analyst} />
+						</Switch>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = state => {
-  return {
-    isAuthenticated: state.Authenticate.isAuthenticated
-  };
+	return {
+		isAuthenticated: state.Authenticate.isAuthenticated
+	};
 };
 const mapDispatchToProps = (dispatch, props) => {
-  return {};
+	return {};
 };
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(App);
