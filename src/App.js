@@ -11,7 +11,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import Analyst from "./components/Anslysist/AllRoom";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./components/DashBoard/dashboard";
 library.add(faCheckSquare, faCoffee);
 
 class App extends Component {
