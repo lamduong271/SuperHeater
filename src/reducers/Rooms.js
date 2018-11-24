@@ -7,6 +7,9 @@ const Rooms = [
         heaterLevel:5,
         heaterStatus:true,
         currentHeaterValue:5,
+        temperature:31,
+        humidity:10,
+        co2:250,
         devices:[
             {
                 id:1,
@@ -50,6 +53,9 @@ const Rooms = [
         heaterLevel:7,
         heaterStatus:true,
         currentHeaterValue:7,
+        temperature:22,
+        humidity:10,
+        co2:250,
     },
     {
         id:3,
@@ -79,6 +85,9 @@ const Rooms = [
         heaterLevel:6,
         heaterStatus:true,
         currentHeaterValue:6,
+        temperature:23,
+        humidity:11,
+        co2:240,
     },
     {
         id:4,
@@ -99,7 +108,10 @@ const Rooms = [
         ],
         heaterLevel:2,
         heaterStatus:true,
-        currentHeaterValue:2
+        currentHeaterValue:2,
+        temperature:23,
+        humidity:11,
+        co2:240,
     }
 ]
 const CurrentHeaterValue = 5;
