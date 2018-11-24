@@ -24,6 +24,7 @@ class ElectricityConsumption extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(this.state)
   };
 
   onSelectChange = (e, data) => {

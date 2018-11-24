@@ -85,7 +85,6 @@ class Heater extends Component {
   render() {
       const {heaterStatus, heaterLevel,currentRoom} = this.props;
       const copyHeater = heaterLevel;
-      console.log(this.props.currentRoom.heaterStatus)
     return (
         <div className="ui segment detail heating-detail">
             <a className="ui orange left ribbon label">Heater</a>
@@ -177,8 +176,6 @@ class Heater extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    heaterStatus: state.Rooms.heaterStatus,
-    heaterLevel: state.Rooms.heaterLevel,
     currentRoom: state.Rooms.currentRoom,
   }
 }

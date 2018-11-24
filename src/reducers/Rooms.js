@@ -7,6 +7,9 @@ const Rooms = [
 		heaterLevel: 5,
 		heaterStatus: true,
 		currentHeaterValue: 5,
+		temperature: 31,
+		humidity: 10,
+		co2: 250,
 		devices: [
 			{
 				id: 1,
@@ -48,7 +51,10 @@ const Rooms = [
 		],
 		heaterLevel: 7,
 		heaterStatus: true,
-		currentHeaterValue: 7
+		currentHeaterValue: 7,
+		temperature: 22,
+		humidity: 10,
+		co2: 250
 	},
 	{
 		id: 3,
@@ -76,7 +82,10 @@ const Rooms = [
 		],
 		heaterLevel: 6,
 		heaterStatus: true,
-		currentHeaterValue: 6
+		currentHeaterValue: 6,
+		temperature: 23,
+		humidity: 11,
+		co2: 240
 	},
 	{
 		id: 4,
@@ -86,17 +95,20 @@ const Rooms = [
 			{
 				name: "Washing machine",
 				source: require("../image/Furniture/washing-machine.png"),
-				watt: 500
+				kwh: 20
 			},
 			{
 				name: "Led",
 				source: require("../image/Furniture/led.png"),
-				watt: 50
+				kwh: 10
 			}
 		],
 		heaterLevel: 2,
 		heaterStatus: true,
-		currentHeaterValue: 2
+		currentHeaterValue: 2,
+		temperature: 23,
+		humidity: 11,
+		co2: 240
 	}
 ];
 const CurrentHeaterValue = 5;
@@ -147,8 +159,7 @@ const reducer = (state = initialState, action) => {
 					state.Rooms[findIndex(state)].heaterLevel = 0;
 					state.currentRoom = Object.assign({}, state.Rooms[findIndex(state)]);
 				} else {
-					state.Rooms[findIndex(state)].heaterLevel =
-						state.Rooms[findIndex(state)].currentHeaterValue;
+					state.Rooms[findIndex(state)].heaterLevel = state.Rooms[findIndex(state)].currentHeaterValue;
 					state.currentRoom = Object.assign({}, state.Rooms[findIndex(state)]);
 				}
 			}

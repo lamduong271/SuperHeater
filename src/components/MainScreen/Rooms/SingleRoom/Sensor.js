@@ -13,30 +13,38 @@ class Sensor extends Component {
 
 
   render() {
+    const {currentRoom} = this.props;
+    console.log("sensor ",currentRoom)
     return (
         <div className=" ui segment  detail sensor-detail">
         <a className="ui orange left ribbon label">Sensor</a>
         <div className="">
-            <ul>
+            {
+              currentRoom
+              ?
+              <ul>
                 <li>
                     <div className="sensor-icon">
                         <FontAwesomeIcon icon={Icons.faTemperatureLow}></FontAwesomeIcon>
                     </div>
-                    <span className="sensor-item">Temperature:</span>  
+                    <span className="sensor-item">Temperature: {currentRoom.temperature} ° C</span>  
                 </li>
                 <li>
                     <div className="sensor-icon">
                         <FontAwesomeIcon icon={Icons.faTint}></FontAwesomeIcon>
                     </div>
-                    <span className="sensor-item">Humidity</span> 
+                    <span className="sensor-item">Humidity {currentRoom.humidity} %rh</span> 
                 </li>
                 <li>
                     <div className="sensor-icon">
-                        <FontAwesomeIcon icon={Icons.faVolumeUp}></FontAwesomeIcon> 
+                        <FontAwesomeIcon icon={Icons.faCloud}></FontAwesomeIcon> 
                     </div>
-                    <span className="sensor-item">Noise</span>
+                    <span className="sensor-item">Co2: {currentRoom.co2}</span>
                 </li>
             </ul>
+            :
+            'loadiing'
+            }
 
           </div>
       </div>  
@@ -48,14 +56,11 @@ class Sensor extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentRoom: state.Rooms.currentRoom
+    currentRoom: state.Rooms.currentRoom,
   }
 }
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    getCurrentRoom:(roomId)=>{
-      dispatch(actions.getCurrentRoom(roomId))
-    }
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Sensor);

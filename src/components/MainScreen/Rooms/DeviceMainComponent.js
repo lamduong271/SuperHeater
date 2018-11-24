@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import RoomList from './RoomList/RoomList';
 import SingleRoom from './SingleRoom/SingleRoom';
 import ElectricityConsumption from './SingleRoom/ElectricityConsumption';
+import * as actions from "../../../actions/index";
+
 class DeviceMainComponent extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +12,9 @@ class DeviceMainComponent extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.getCurrentRoom(1);
+  }
 
   render() {
     return (
@@ -43,6 +48,9 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch, props) => {
   return {
+    getCurrentRoom:(roomId)=>{
+      dispatch(actions.getCurrentRoom(roomId))
+    }
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(DeviceMainComponent);
