@@ -6,7 +6,7 @@ const onHealthAssessment = (name, value) => {
 	const roomValue = Number(value);
 	const idealMinVal = idealConstants[name][0],
 		idealMaxVal = idealConstants[name][1];
-	let tempt, moist, CO2;
+	let tempt, humidity, CO2, watt, cost;
 	if (name === "tempt") {
 		if (roomValue >= idealMinVal && roomValue <= idealMaxVal) {
 			tempt = "Room temperature is ideal";
@@ -18,15 +18,15 @@ const onHealthAssessment = (name, value) => {
 			tempt = "Invalid room temperature";
 		}
 	}
-	if (name === "moist") {
+	if (name === "humidity") {
 		if (roomValue >= idealMinVal && roomValue <= idealMaxVal) {
-			moist = "Room humidity is ideal";
+			humidity = "Room humidity is ideal";
 		} else if (roomValue < idealMinVal) {
-			moist = "Room humidity is too low";
+			humidity = "Room humidity is too low";
 		} else if (roomValue > idealMaxVal) {
-			moist = "Room humidity is too high";
+			humidity = "Room humidity is too high";
 		} else {
-			moist = "Invalid room humidity";
+			humidity = "Invalid room humidity";
 		}
 	}
 	if (name === "CO2") {
@@ -40,7 +40,16 @@ const onHealthAssessment = (name, value) => {
 			CO2 = "Invalid room CO2";
 		}
 	}
-	return { tempt, moist, CO2 };
+	if (name === "watt") {
+		if (roomValue >= idealMinVal && roomValue <= idealMaxVal) {
+			watt = "Room energy consumption is ideal";
+		} else if (roomValue > idealMaxVal) {
+			watt = "Room energy consumption is too large";
+		} else {
+			watt = "Invalid room energy consumption";
+		}
+	}
+	return { tempt, humidity, CO2, watt, cost: null };
 };
 
 const CustomTooltip = props => {
@@ -55,7 +64,7 @@ const CustomTooltip = props => {
 							<div>
 								{val.name}: {val.value}
 							</div>
-							<div> => {onHealthAssessment(val.name, val.value)[val.name]}</div>
+							<div>{onHealthAssessment(val.name, val.value)[val.name]}</div>
 						</div>
 					))}
 				</div>
