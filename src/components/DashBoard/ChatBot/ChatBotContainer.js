@@ -98,7 +98,7 @@ class ChatBotContainer extends Component {
         },
         {
           id: "4",
-          message: `Temperature inside your bedroom is now +${this.state.messageInfor} `,
+          message: `Temperature inside your bedroom is now ${Rooms[0].temperature} celsius`,
           end: true
         }
       ]
@@ -118,6 +118,7 @@ class ChatBotContainer extends Component {
           :
           ''
         }
+
        
       </div>
     );

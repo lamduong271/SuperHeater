@@ -151,7 +151,7 @@ class ElectricityConsumption extends Component {
           </p>
           <p>
             It costs:{" "}
-            <span style={{fontStyle:'italic', fontWeight:700}}>
+            <span style={{fontStyle:'italic', fontWeight:700,}}>
             {Math.round(
               (this.calculateCost() * this.calculateKwh() * 0.00016 + 0.00001) *
                 100
