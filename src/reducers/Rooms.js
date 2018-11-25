@@ -15,19 +15,22 @@ const Rooms = [
 				id: 1,
 				name: "TV",
 				source: require("../image/Furniture/TV.png"),
-				kwh: 20
+        kwh: 20,
+        hours:10
 			},
 			{
 				id: 2,
 				name: "Fridge",
 				source: require("../image/Furniture/fridge.png"),
-				kwh: 30
+				kwh: 30,
+        hours:10
 			},
 			{
 				id: 3,
 				name: "Computer",
 				source: require("../image/Furniture/computer.png"),
-				kwh: 10
+				kwh: 10,
+        hours:10
 			}
 		]
 	},
@@ -40,13 +43,15 @@ const Rooms = [
 				id: 4,
 				name: "TV",
 				source: require("../image/Furniture/TV.png"),
-				kwh: 20
+				kwh: 20,
+        hours:10
 			},
 			{
 				id: 5,
 				name: "Lamp",
 				source: require("../image/Furniture/lamp2.png"),
-				kwh: 30
+				kwh: 30,
+        hours:10
 			}
 		],
 		heaterLevel: 7,
@@ -65,19 +70,22 @@ const Rooms = [
 				id: 6,
 				name: "Microwave",
 				source: require("../image/Furniture/microwave.png"),
-				kwh: 20
+				kwh: 20,
+        hours:10
 			},
 			{
 				id: 7,
 				name: "Fridge",
 				source: require("../image/Furniture/fridge.png"),
-				kwh: 30
+				kwh: 30,
+        hours:10
 			},
 			{
 				id: 8,
 				name: "Oven",
 				source: require("../image/Furniture/oven.png"),
-				kwh: 10
+				kwh: 10,
+        hours:10
 			}
 		],
 		heaterLevel: 6,
@@ -95,12 +103,14 @@ const Rooms = [
 			{
 				name: "Washing machine",
 				source: require("../image/Furniture/washing-machine.png"),
-				kwh: 20
+				kwh: 20,
+        hours:10
 			},
 			{
 				name: "Led",
 				source: require("../image/Furniture/led.png"),
-				kwh: 10
+				kwh: 10,
+        hours:10
 			}
 		],
 		heaterLevel: 2,
@@ -188,7 +198,12 @@ const reducer = (state = initialState, action) => {
 					state.currentRoom = Object.assign({}, state.Rooms[findIndex(state)]);
 				}
 			}
-			return { ...state };
+      return { ...state };
+      case types.ADD_DEVICE:
+      const index = state.Rooms.findIndex(item => item.name === action.room);
+      let newRooms = state.Rooms;
+      newRooms[index].devices.push(action.device);
+      return { ...state, newRooms };
 
 		default:
 			return { ...state };

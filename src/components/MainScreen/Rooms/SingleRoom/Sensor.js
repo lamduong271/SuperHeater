@@ -1,23 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../../actions/index";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 class Sensor extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    }
+    this.state = {};
   }
-
-
 
   render() {
     const {currentRoom} = this.props;
     console.log("sensor ",currentRoom)
     return (
-        <div className=" ui segment  detail sensor-detail">
-        <a className="ui orange left ribbon label">Sensor</a>
+      <div className=" ui segment  detail sensor-detail">
+        <span className="ui orange left ribbon label">Sensor</span>
         <div className="">
             {
               currentRoom
@@ -53,14 +50,19 @@ class Sensor extends Component {
   }
 }
 
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    currentRoom: state.Rooms.currentRoom,
-  }
-}
+    currentRoom: state.Rooms.currentRoom
+  };
+};
 const mapDispatchToProps = (dispatch, props) => {
   return {
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Sensor);
+    getCurrentRoom: roomId => {
+      dispatch(actions.getCurrentRoom(roomId));
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Sensor);

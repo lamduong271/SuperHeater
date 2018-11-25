@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import RoomList from './RoomList/RoomList';
 import SingleRoom from './SingleRoom/SingleRoom';
@@ -8,8 +8,7 @@ import * as actions from "../../../actions/index";
 class DeviceMainComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    }
+    this.state = {};
   }
 
   componentDidMount() {
@@ -19,33 +18,25 @@ class DeviceMainComponent extends Component {
   render() {
     return (
       <div>
-        <RoomList></RoomList>
-        {
-          this.props.currentRoom
-          ?
+        <RoomList />
+        {this.props.currentRoom ? (
           <div>
-              <SingleRoom></SingleRoom>
-              <ElectricityConsumption></ElectricityConsumption>
+            <SingleRoom />
+            <ElectricityConsumption />
           </div>
-          :
-          ''
-        }
-              
-          
-        
-          
+        ) : (
+          ""
+        )}
       </div>
-     
     );
   }
 }
 
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     currentRoom: state.Rooms.currentRoom
-  }
-}
+  };
+};
 const mapDispatchToProps = (dispatch, props) => {
   return {
     getCurrentRoom:(roomId)=>{
