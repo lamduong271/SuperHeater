@@ -50,6 +50,43 @@ class ElectricityConsumption extends Component {
     });
   };
 
+  onAddDevice = () => {
+    const deviceType = devices.find(i => i.text === this.state.name);
+    const newDevice = {
+      id: this.props.currentRoom.devices.length + 1,
+      name: this.state.name,
+      kwh: Number(this.state.kwh),
+      hours: Number(this.state.hours),
+      source: deviceType.source
+    };
+    this.props.addDevice(newDevice, this.props.currentRoom.name);
+    this.handleClose();
+  };
+
+  calculateKwh = () => {
+    if (this.props.currentRoom.devices) {
+      const total = this.props.currentRoom.devices
+        .map(o => o.kwh)
+        .reduce((total, amount) => {
+          return total + amount;
+        });
+
+      return total;
+    }
+  };
+
+  calculateCost = () => {
+    if (this.props.currentRoom.devices) {
+      const total = this.props.currentRoom.devices
+        .map(o => o.hours)
+        .reduce((total, amount) => {
+          return total + amount;
+        });
+      console.log("Hours", total);
+      return total;
+    }
+  };
+
   render() {
     let renderDevicesInCurrentRoom;
     const options = devices;
@@ -58,7 +95,7 @@ class ElectricityConsumption extends Component {
       renderDevicesInCurrentRoom = this.props.currentRoom.devices.map(
         device => {
           return (
-            <span key={device.name} className="consumption-icon-wrapper">
+            <span key={device.id} className="consumption-icon-wrapper">
               <div className="consumption-icon">
                 <img src={device.source} alt="" />
               </div>
@@ -76,9 +113,12 @@ class ElectricityConsumption extends Component {
       );
     }
     return (
-      <div className="electricity-consumption ">
+      <div className="electricity-consumption">
         {this.props.currentRoom.devices ? (
-          <div className="electricity-consumption-detail">
+          <div className=" ui segment electricity-consumption-detail">
+            <span className="ui orange left ribbon label">
+              Consumtion Calculation
+            </span>
             {renderDevicesInCurrentRoom}
             <span
               onClick={this.openFormDevice}
@@ -97,7 +137,28 @@ class ElectricityConsumption extends Component {
           ""
         )}
 
-        {/* DIAGO */}
+        <div className="ui segment electricity-consumption-calculation">
+          <span className="ui orange left ribbon label">
+            Consumtion Calculation
+          </span>
+          <p>
+            You spent total: {this.calculateCost() * this.calculateKwh()} Watt
+          </p>
+          <p>
+            It cost:{" "}
+            {Math.round(
+              (this.calculateCost() * this.calculateKwh() * 0.00016 + 0.00001) *
+                100
+            ) / 100}{" "}
+            €
+          </p>
+          <p>
+            Avarage cost in your country: 1.7 € per day for a household / ~7,3
+            kWh. / 16 cent for 1 kwh
+          </p>
+        </div>
+
+        {/* ADD FORM */}
         <div>
           <Dialog
             disableBackdropClick
@@ -122,8 +183,8 @@ class ElectricityConsumption extends Component {
                 name="kwh"
                 onChange={this.handleChange}
                 fluid
-                label="kwh"
-                placeholder="Kw/h"
+                label="Watt"
+                placeholder="W"
               />
               <Form.Input
                 value={this.state.hours}
@@ -134,7 +195,7 @@ class ElectricityConsumption extends Component {
                 placeholder="average hour used per day"
               />
               <Form.Group widths="equal">
-                <Form.Button onClick={this.handleClose}>Submit</Form.Button>
+                <Form.Button onClick={this.onAddDevice}>Submit</Form.Button>
                 <Form.Button onClick={this.handleClose}>Cancel</Form.Button>
               </Form.Group>
             </Form>
@@ -154,6 +215,9 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     getCurrentRoom: roomId => {
       dispatch(actions.getCurrentRoom(roomId));
+    },
+    addDevice: (device, room) => {
+      dispatch(actions.addDevice(device, room));
     }
   };
 };

@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "./actions/index";
-import Landing from "./components/Introduction/Landing";
-import Menu from "./components/Menu/Menu";
 import Login from "./components/Introduction/login";
 import DeviceMainComponent from "./components/MainScreen/Rooms/DeviceMainComponent";
 import "./App.scss";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import Analyst from "./components/Anslysist/AllRoom";
 import Dashboard from "./components/DashBoard/Dashboard";

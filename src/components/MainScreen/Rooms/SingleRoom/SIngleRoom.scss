@@ -1,167 +1,177 @@
 $headerColor: #f2711c;
 
 .single-room-container {
-    padding: 10px 30px 10px 30px;
-    .device-content-wrapper{
-        display: inline-block;
-        .detail{
-            height: 100%;
-            -webkit-box-shadow: -1px 3px 11px -1px rgba(21,47,79,1);
-            -moz-box-shadow: -1px 3px 11px -1px rgba(21,47,79,1);
-            box-shadow: -1px 3px 11px -1px rgba(21,47,79,0.4);
-            border-radius: 3px;
-            background-color: #fff;
-            ul {
-                margin-top: 10px;
-                li {
-                    list-style: none;
-                    line-height: 30px;
-                    .sensor-icon {
-                        height: 15px;
-                        display: inline-block;
-                        width: 15px;
-                    }
-                    .sensor-item {
-                        margin-left: 20px;
-                    }
-                }
-            }
-
-        }
-    }
-    .sensor {
-        height: 200px;
-        width:100%;
-    }
-    .heating {
-        height: 200px;
-        width: 100%;
-    }
-    .sensor-detail {
-        margin-right: 10px !important;
-    }
-    .heating-detail {
-        margin-left: 10px !important;
-        position: relative;
-        .set-time {
-            button {
-                display: inline;
-            }
-            .or{
-                display: inline-block !important;
-                position: absolute !important;
-                background-color: #fff;
-                left: 60px;
-                bottom:88px;
-                border-radius: 50px;
-                padding: 5px;
-                height: 21px;
-                width:21px;
-                &:after {
-                    content: 'or';
-                    position: absolute;
-                    bottom: 2px;
-                }
-            }
-            .set-time-btn {
-                margin-top: 10px;
-            }
-        }
-        .on-off{
-            margin-top: 10px;
-        }
-        .progress {
-            height: 100px;
-            width:100px;
+  padding: 10px 30px 10px 30px;
+  .device-content-wrapper {
+    display: inline-block;
+    .detail {
+      height: 100%;
+      -webkit-box-shadow: -1px 3px 11px -1px rgba(21, 47, 79, 1);
+      -moz-box-shadow: -1px 3px 11px -1px rgba(21, 47, 79, 1);
+      box-shadow: -1px 3px 11px -1px rgba(21, 47, 79, 0.4);
+      border-radius: 3px;
+      background-color: #fff;
+      ul {
+        margin-top: 10px;
+        li {
+          list-style: none;
+          line-height: 30px;
+          .sensor-icon {
+            height: 15px;
             display: inline-block;
-            padding-top: 10px;
-            position: absolute;
-            right:70px;
-            bottom:85px;
+            width: 15px;
+          }
+          .sensor-item {
+            margin-left: 20px;
+          }
         }
+      }
     }
+  }
+  .sensor {
+    height: 200px;
+    width: 100%;
+  }
+  .heating {
+    height: 200px;
+    width: 100%;
+  }
+  .sensor-detail {
+    margin-right: 10px !important;
+  }
+  .heating-detail {
+    margin-left: 10px !important;
+    position: relative;
+    .set-time {
+      button {
+        display: inline;
+      }
+      .or {
+        display: inline-block !important;
+        position: absolute !important;
+        background-color: #fff;
+        left: 60px;
+        bottom: 88px;
+        border-radius: 50px;
+        padding: 5px;
+        height: 21px;
+        width: 21px;
+        &:after {
+          content: "or";
+          position: absolute;
+          bottom: 2px;
+        }
+      }
+      .set-time-btn {
+        margin-top: 10px;
+      }
+    }
+    .on-off {
+      margin-top: 10px;
+    }
+    .progress {
+      height: 100px;
+      width: 100px;
+      display: inline-block;
+      padding-top: 10px;
+      position: absolute;
+      right: 70px;
+      bottom: 85px;
+    }
+  }
 }
 // DIALOG
 
 .content-dialog {
-    height: 600px;
-    width: 600px;
-    .time-picker{
-        height: 300px;
-        width: 300px;
-        margin: auto;
-    }
+  height: 600px;
+  width: 600px;
+  .time-picker {
+    height: 300px;
+    width: 300px;
+    margin: auto;
+  }
 }
 
 //overwrite
 .react_times_button {
-    background-color: #3498db!important;
-    color: #fff !important;
+  background-color: #3498db !important;
+  color: #fff !important;
 }
 .time_picker_modal_footer {
-    display: none;
+  display: none;
 }
 
 //electricity-consumption
 
-.electricity-consumption  {
-    padding: 30px 30px 10px 30px;
-    height: 300px;
-    .electricity-consumption-detail {
-        height: 100%;
-        -webkit-box-shadow: -1px 3px 11px -1px rgba(21,47,79,1);
-        -moz-box-shadow: -1px 3px 11px -1px rgba(21,47,79,1);
-        box-shadow: -1px 3px 11px -1px rgba(21,47,79,0.4);
-        background-color: #fff;
-        border-radius: 3px;
-        .consumption-icon-wrapper {
-            display: inline-flex;
-            height:70px;
-            width:70px;
-            background-color: rgba(174, 211, 253, 0.678);
-            border: 1px solid rgba(21, 91, 172, 0.705);
-            margin: 10px;
-            border-radius: 50px;
-            justify-content: center;
-            position: relative;
-            
-        .consumption-icon {
-            margin-top: 15px;
-            img{
-                height: 35px;
-                width:35px
-            }
-        }
-        .consumption-edit {
-            height:30px;
-            width:30px;
-            background-color: $headerColor;
-            position: absolute;
-            border-radius: 20px;
-            bottom:-10px;
-            right:0px;
-            cursor: pointer;
-            .icon {
-                margin-left: 8px;
-                margin-top: 5px;
-            }
-        }
-        }
-        .plus {
-            background-color: rgba(174, 211, 253, 0.4);
-            border: 1px solid rgba(21, 91, 172, 0.405);
-            cursor: pointer;
-            &:hover {
-                background-color: rgba(174, 211, 253, 0.6);
-            }
+.electricity-consumption {
+  padding: 30px 30px 10px 30px;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  &-detail {
+    width: 55%;
+    height: 100%;
+    -webkit-box-shadow: -1px 3px 11px -1px rgba(21, 47, 79, 1);
+    -moz-box-shadow: -1px 3px 11px -1px rgba(21, 47, 79, 1);
+    box-shadow: -1px 3px 11px -1px rgba(21, 47, 79, 0.4);
+    background-color: #fff;
+    border-radius: 3px;
+    .consumption-icon-wrapper {
+      display: inline-flex;
+      height: 70px;
+      width: 70px;
+      background-color: rgba(174, 211, 253, 0.678);
+      border: 1px solid rgba(21, 91, 172, 0.705);
+      margin: 10px;
+      border-radius: 50px;
+      justify-content: center;
+      position: relative;
 
+      .consumption-icon {
+        margin-top: 15px;
+        img {
+          height: 35px;
+          width: 35px;
         }
+      }
+      .consumption-edit {
+        height: 30px;
+        width: 30px;
+        background-color: $headerColor;
+        position: absolute;
+        border-radius: 20px;
+        bottom: -10px;
+        right: 0px;
+        cursor: pointer;
+        .icon {
+          margin-left: 8px;
+          margin-top: 5px;
+        }
+      }
     }
+    .plus {
+      background-color: rgba(174, 211, 253, 0.4);
+      border: 1px solid rgba(21, 91, 172, 0.405);
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(174, 211, 253, 0.6);
+      }
+    }
+  }
+  &-calculation {
+    width: 35%;
+    -webkit-box-shadow: -1px 3px 11px -1px rgba(21, 47, 79, 1);
+    -moz-box-shadow: -1px 3px 11px -1px rgba(21, 47, 79, 1);
+    box-shadow: -1px 3px 11px -1px rgba(21, 47, 79, 0.4) !important;
+    background-color: #fff;
+    border-radius: 3px;
+    margin: 0 !important;
+  }
 }
 
 //dislog
-.form-add-device{
-    width: 400px;
-    height: 320px;
-    padding: 30px;
+.form-add-device {
+  width: 400px;
+  height: 320px;
+  padding: 30px;
 }
