@@ -65,7 +65,7 @@ class App extends Component {
 					</div>
 					<div className="twelve wide wide column router">
 						<Switch>
-							<Route path="/" exact component={Login} />
+							<Route path="/" exact component={Dashboard} />
 							<Route path="/dashboard" component={Dashboard} />
 							<Route path="/devices" component={DeviceMainComponent} />
 							<Route path="/analyst" component={Analyst} />
