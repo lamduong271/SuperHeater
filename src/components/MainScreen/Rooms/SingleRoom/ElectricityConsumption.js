@@ -24,7 +24,7 @@ class ElectricityConsumption extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state)
+    console.log(this.state);
   };
 
   onSelectChange = (e, data) => {
@@ -66,7 +66,10 @@ class ElectricityConsumption extends Component {
 
   calculateKwh = () => {
     if (this.props.currentRoom.devices) {
-      console.log("this.props.currentRoom.devices ", this.props.currentRoom.devices)
+      console.log(
+        "this.props.currentRoom.devices ",
+        this.props.currentRoom.devices
+      );
       const total = this.props.currentRoom.devices
         .map(o => o.kwh)
         .reduce((total, amount) => {
@@ -92,7 +95,11 @@ class ElectricityConsumption extends Component {
   render() {
     let renderDevicesInCurrentRoom;
     const options = devices;
-
+    const cal = Math.round(
+      (this.calculateCost() * this.calculateKwh() * 0.00016 +
+        0.00001) *
+        100
+    ) / 100;
     if (this.props.currentRoom.devices) {
       renderDevicesInCurrentRoom = this.props.currentRoom.devices.map(
         device => {
@@ -122,21 +129,20 @@ class ElectricityConsumption extends Component {
               Consumtion Calculation
             </span>
             <div className="electricity-consumption-list-device">
-            {renderDevicesInCurrentRoom}
-            <span
-              onClick={this.openFormDevice}
-              className="consumption-icon-wrapper plus"
-            >
-              <div className="consumption-icon">
-                <img
-                  src={require("../../../../image/Furniture/plus.png")}
-                  alt=""
-                />
-              </div>
-              <div className="consumption-item" />
-            </span>
+              {renderDevicesInCurrentRoom}
+              <span
+                onClick={this.openFormDevice}
+                className="consumption-icon-wrapper plus"
+              >
+                <div className="consumption-icon">
+                  <img
+                    src={require("../../../../image/Furniture/plus.png")}
+                    alt=""
+                  />
+                </div>
+                <div className="consumption-item" />
+              </span>
             </div>
-            
           </div>
         ) : (
           ""
@@ -146,24 +152,40 @@ class ElectricityConsumption extends Component {
           <span className="ui orange left ribbon label">
             Consumtion Calculation
           </span>
-          <p style={{marginTop:'30px'}}>
-            You spent total: <span style={{fontStyle:'italic', fontWeight:700}}>{this.calculateCost() * this.calculateKwh()} Watt</span>
-          </p>
-          <p>
-            It costs:{" "}
-            <span style={{fontStyle:'italic', fontWeight:700,}}>
-            {Math.round(
-              (this.calculateCost() * this.calculateKwh() * 0.00016 + 0.00001) *
-                100
-            ) / 100}{" "}
-            €
+          <p style={{ marginTop: "10px",marginBottom:'15px' }}>
+            <strong>You spent total: </strong>
+            <span style={{ fontStyle: "italic", fontWeight: 700 }}>
+              {this.calculateCost() * this.calculateKwh()} Watt / day
             </span>
-            
           </p>
-          <p>
-            Avarage cost in your country: 1.7 € per day for a household / ~7,3
-            kWh. / 16 cent for 1 kwh
+          <p style={{marginBottom:'15px'}}>
+            <strong>It costs:</strong>{" "}
+            <span style={{ fontStyle: "italic", fontWeight: 700 }}>
+              {Math.round(
+                (this.calculateCost() * this.calculateKwh() * 0.00016 +
+                  0.00001) *
+                  100
+              ) / 100}{" "}
+              € / day
+            </span>
           </p>
+          <p style={{marginBottom:'15px'}}>
+            <strong>Avarage cost in your country: 1.7 € per day for a
+            household / ~10.62 kWh. / 16 Euro cents for 1 kwh</strong>
+          </p>
+          {
+            cal>1.7
+            ?
+            <div className="conclusion">
+              <img src={require("../../../../image/fail.png")} alt=""/>
+              <p style={{color:'#56595b'}}>You should reduce consumption enery</p>
+            </div>
+            :
+            <div className="conclusion">
+            <img src={require("../../../../image/success.png")} alt=""/>
+            <p style={{color:'#67ea9b'}}>Great! you are doing a good job</p>
+          </div>
+          }
         </div>
 
         {/* ADD FORM */}

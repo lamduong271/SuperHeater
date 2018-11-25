@@ -10,42 +10,47 @@ class Sensor extends Component {
   }
 
   render() {
-    const {currentRoom} = this.props;
-    console.log("sensor ",currentRoom)
+    const { currentRoom } = this.props;
+    console.log("sensor ", currentRoom);
     return (
       <div className=" ui segment  detail sensor-detail">
         <span className="ui orange left ribbon label">Sensor</span>
-        <div className="">
-            {
-              currentRoom
-              ?
-              <ul>
-                <li>
-                    <div className="sensor-icon">
-                        <FontAwesomeIcon icon={Icons.faTemperatureLow}></FontAwesomeIcon>
-                    </div>
-                    <span className="sensor-item">Temperature: {currentRoom.temperature} ° C</span>  
-                </li>
-                <li>
-                    <div className="sensor-icon">
-                        <FontAwesomeIcon icon={Icons.faTint}></FontAwesomeIcon>
-                    </div>
-                    <span className="sensor-item">Humidity {currentRoom.humidity} %rh</span> 
-                </li>
-                <li>
-                    <div className="sensor-icon">
-                        <FontAwesomeIcon icon={Icons.faCloud}></FontAwesomeIcon> 
-                    </div>
-                    <span className="sensor-item">Co2: {currentRoom.co2}</span>
-                </li>
+        <div className="sensor-wrapper">
+          {currentRoom ? (
+            <ul>
+              <li>
+                <div className="sensor-icon">
+                  <FontAwesomeIcon icon={Icons.faTemperatureLow} />
+                </div>
+                <div className="sensor-item">
+                  <strong>Temperature: </strong>
+                  {currentRoom.temperature} ° C
+                </div>
+              </li>
+              <li>
+                <div className="sensor-icon">
+                  <FontAwesomeIcon icon={Icons.faTint} />
+                </div>
+                <div className="sensor-item">
+                  <strong>Humidity :</strong>
+                  {currentRoom.humidity} %rh
+                </div>
+              </li>
+              <li>
+                <div className="sensor-icon">
+                  <FontAwesomeIcon icon={Icons.faCloud} />
+                </div>
+                <div className="sensor-item">
+                  <strong>Co2: </strong>
+                  {currentRoom.co2}
+                </div>
+              </li>
             </ul>
-            :
-            'loadiing'
-            }
-
-          </div>
-      </div>  
-     
+          ) : (
+            "loadiing"
+          )}
+        </div>
+      </div>
     );
   }
 }
