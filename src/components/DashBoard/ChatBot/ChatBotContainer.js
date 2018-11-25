@@ -40,32 +40,6 @@ class ChatBotContainer extends Component {
       messageWarning,
     })
   }
-
-  // {
-  //   id: "1",
-  //   message: this.generalHouseInfor.messageOrigin,
-  //   trigger: "4"
-  // },
-  // {
-  //   id: "2",
-  //   message: this.generalHouseInfor.messageInfor,
-  //   trigger: "4"
-  // },
-  // {
-  //   id: "3",
-  //   message: this.generalHouseInfor.messageWarning,
-  //   trigger: "4"
-  // },
-  // {
-  //   id: "4",
-  //   user: true,
-  //   trigger: "3"
-  // },
-  // {
-  //   id: "5",
-  //   message: `Temperature inside your bedroom is now +${Rooms[0].temperature} `,
-  //   end: true
-  // }
   render() {
     console.log(this.state.messageOrigin)
     const {Rooms} = this.props;
@@ -81,15 +55,38 @@ class ChatBotContainer extends Component {
             <p>{this.state.messageWarning}</p>
             </div>
           ),
-          trigger: "2"
+          trigger: 'question',
+
         },
         {
-          id: "2",
-          user: true,
-          trigger: "3"
+          id: 'question',
+          message: 'Do you want me to reduce the heater?',
+          trigger: '2',
+        },
+        {
+          id: '2',
+          options: [
+            { value: 'yes', label: 'Yes', trigger: 'update-yes' },
+            { value: 'no', label: 'No', trigger: 'update-no' },
+          ],
+        },
+        {
+          id: 'update-yes',
+          message: 'Heater updated ! anything else?',
+          trigger: '3',
+        },
+        {
+          id: 'update-no',
+          message: 'OK! anything else',
+          trigger: '3',
         },
         {
           id: "3",
+          user: true,
+          trigger: "4"
+        },
+        {
+          id: "4",
           message: `Temperature inside your bedroom is now +${this.state.messageInfor} `,
           end: true
         }
