@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import ChatBot from "react-simple-chatbot";
 import { connect } from "react-redux";
 import * as actions from "../../../actions/index";
+import fetch from 'isomorphic-fetch';
+import wittoken from '../../../key_secret/wit';
 
 class ChatBotContainer extends Component {
   constructor(props) {
@@ -16,6 +18,15 @@ class ChatBotContainer extends Component {
   
   componentDidMount(){
     this.generalHouseInfor();
+    fetch(
+      'https://api.wit.ai/message?v=20181125&q=turn on heater',
+      {
+        method: 'GET',
+        headers: {Authorization: `Bearer ${wittoken}`}
+      }
+    )
+    .then(response => response.json())
+    .then(json => console.log(json));
   }
 
   generalHouseInfor = () => {
