@@ -7,4 +7,4 @@
 
 ## One of 3 winners under track IOT's challenge by Ensto company, Junction 2018 - Bigest hackathon in Europe,
 
-<img src="https://imgur.com/a/CHWal9V" width="350"/>
+<img src="https://i.imgur.com/a/CHWal9V.jpg" width="350"/>
